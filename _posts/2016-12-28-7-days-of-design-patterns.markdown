@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "7 Days of Design Patterns | Part 1"
-date:   2015-02-12 13:46:40
+date:   2016-12-28 13:46:40
 categories: wanderings
 ---
 Welcome! I am so glad you came here to read about design patterns. With the Ruby on Rails community having such
