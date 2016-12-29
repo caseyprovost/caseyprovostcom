@@ -84,6 +84,7 @@ class UserController < ApplicationController
     end
   end
 end
+{% endhighlight %}
 
 As you can see from this example the block to send an email was utilized so we could set an instance variable for a particular use
 case and more specifically to send an email to the user. There are so many times that sending email based on one action is not
