@@ -43,8 +43,8 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 .icon-facebook-rect:before { content: '\e803'; }
 
 /* Spacing */
-.post h1, h3, h4, h5, p, .post-body ul, #post-list li, pre {
-margin-bottom: 20px;
+.post h1, h3, h4, h5, p, #post-body ul, #post-list li, pre {
+margin-bottom: 30px;
 }
 
 /* Base */
@@ -58,20 +58,20 @@ body {
 }
 
 h1 {
-	font-size: 30px;
+	font-size: 35px;
 	letter-spacing: -1px;
 	color: #222;
 	font-weight: bold;
 }
 
 h2 {
-	font: italic 19px/1.3em Georgia,serif;
+	font: italic 25px/1.3em Georgia,serif;
 	color: #bbb;
 }
 
 .profile #wrapper {
 	padding: 100px 40px 0px;
-	max-width: 600px;
+	max-width: 800px;
 	margin: 0 auto;
 }
 
@@ -94,12 +94,12 @@ h2 {
 .profile h1 {
 	font-weight: 400;
 	letter-spacing: 0px;
-	font-size: 20px;
+	font-size: 25px;
 	color: #222;
 }
 
 .profile h2 {
-	font-size: 20px;
+	font-size: 25px;
 	  font-weight: 300;
 	  color: #aaa;
 	  margin-top: 10px;
@@ -139,13 +139,13 @@ nav.main-nav a.cta {
 }
 
 #wrapper {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 60px 40px 100px 40px;
 }
 
 #wrapper.home {
-	max-width: 600px;
+	max-width: 800px;
 	margin: 0 auto;
 	padding: 0px 40px 20px 40px;
 }
@@ -186,7 +186,7 @@ ul 	{ margin:0; padding:0; }
 li	{ list-style-type:circle; list-style-position:inside; }
 
 /* Line Height */
-#post-body, p { line-height:1.7; font-size: 18px; }
+#post-body, p { line-height:1.7; }
 
 b, strong { font-weight: 500;
   color: #1E2025; }
@@ -196,7 +196,7 @@ em, i { font-style: italic; }
 	display: inline-block;
 	line-height: 100%;
 	font-weight: 500;
-	font-size: 19px;
+	font-size: 25px;
 	margin: 0;
 	padding-bottom: 20px;
 }
@@ -206,8 +206,6 @@ em, i { font-style: italic; }
 	font: italic 14px/1.4em Georgia,serif;
 	color: #aaa;
 }
-
-
 
 .home h1 {
 	font-size: 30px;
@@ -223,7 +221,6 @@ em, i { font-style: italic; }
 
 .post header {
 	text-align:center;
-
 }
 
 .post h1 {
@@ -234,7 +231,7 @@ em, i { font-style: italic; }
 
 .post h2 {
 	margin-bottom: 40px;
-	  font: 300 24px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;
+	  font: 300 27px/1.5 "Helvetica Neue",Helvetica,Arial,sans-serif;
 	  color: #111;
 }
 
@@ -260,9 +257,9 @@ em, i { font-style: italic; }
 
 h3, h4, h5 { color:#333; }
 
-h3 { font-size:20px; font-weight: 400; }
-h4 { font-size:16px; font-weight:bold; }
-h5 { font-size:15px; font-weight: bold; }
+h3 { font-size:25px; font-weight: 400; }
+h4 { font-size:21px; font-weight: 400; }
+h5 { font-size:19px; font-weight: 400; }
 
 h6 {
 	font-size: 13px;
@@ -304,7 +301,7 @@ pre	{
 	border-radius: 3px;
 	background: #272b2d;
 	  font-family: 'Source Code Pro',Menlo,monospace;
-	  font-size: 13px;
+	  font-size: 16px;
 	  line-height: 1.5em;
 	  font-weight: 500;
 	color: #d0d4d7;

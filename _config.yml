@@ -1,5 +1,5 @@
 name: CaseyProvost.com
-description: These are the mad ramblings of a Ruby wanderer, code spalunker, father, cyclist, and super nerd.
+description: These are the mad ramblings of a Ruby wanderer, father, cyclist, and super nerd.
 meta_description: "These are the mad ramblings of a Ruby wanderer, code spalunker, father, cyclist, and super nerd."
 
 aboutPage: true
@@ -11,13 +11,13 @@ kramdown:
 gems: [jekyll-paginate]
 paginate: 20
 baseurl: /
-domain_name: "http://caseyprovost.com"
-google_analytics: 'UA-XXXXXXXX-X'
-disqus: false
+domain_name: "https://caseyprovost.com"
+google_analytics: 'UA-89616188-1'
+disqus: true
 disqus_shortname: 'caseyprovost'
 
 # Details for the RSS feed generator
-url:            'http://caseyprovost.com'
+url:            'https://caseyprovost.com'
 author:         'Casey Provost'
 authorTwitter:  'caseyprovost'
 
