@@ -12,7 +12,7 @@ I have worked for years in the medical and financial sectors which may have jade
 
 Alright back to my personal life.
 
-In 2008 I got just about the greatest gift one could receive, a bouncing baby boy. My son Issac is probably my biggest man and my second best friend. We do everything together like play Minecraft, build igloos, race bicycles, and even travel together. However he now is contested, because in August of 2016 I asked my very best friend Sidney to marry me. We will be married in September of 2017 and everyone will come at least second to her for the rest of our lives.
+In 2008 I got just about the greatest gift one could receive, a bouncing baby boy. My son Issac is probably my biggest fan and my second best friend. We do everything together like play Minecraft, build igloos, race bicycles, and even travel together. However he now is contested, because in August of 2016 I asked my very best friend Sidney to marry me. We will be married in September of 2017 and everyone will come at least second to her for the rest of our lives.
 
 When I am not hanging with my family, I spend a lot of time cycling. While some may argue that my frequency of injury means I should perhaps limit my time on a bike; I took it as a challenge and now have a road cycling bike and a mountain bike to maximize the amount of time in the saddle! I have raced all over the state, but really enjoy bringing the family every Wednesday in the summer to our local track race. And yes I am one of those crazy people that ride 80-100miles per ride more than once per year.
 
