@@ -25,3 +25,5 @@ When I am not hanging with my family, I spend a lot of time cycling. While some 
 
 The day to day around my house is damn near perfect, and everyone loves that I work from home. Even though sometimes I have to close and lock
 the door to bar my son from running in during a Hangout! At my desk I usually have one of our two cats on my lap, two seductively sleek studio monitors on each side of my face, and my brilliantly shining Macbook pro. Can you really ask for anything more?
+
+{% include footer.html %}
