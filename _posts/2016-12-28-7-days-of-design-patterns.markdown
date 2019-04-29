@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "7 Days of Design Patterns | Part 1"
+title:  "Seven Days of Design Patterns | Part 1 - Interactors"
 date:   2016-12-28 13:46:40
-categories: wanderings
+categories: ruby,design-patterns
 ---
 Welcome! I am so glad you came here to read about design patterns. With the Ruby on Rails community having such an abundance of newer developers and newer self-taught developers I thought it was excellent time to share some real world usage of design patterns. I picked the ones that have helped me to save dozens of applications and simplified many issues.
 

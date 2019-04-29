@@ -1,0 +1,19 @@
+---
+layout: post
+title:  "Restart"
+date:   2019-04-26
+categories: wanderings
+---
+
+Wow, how time flies. As I sit down to pick blogging back up, I am astounded to see that my last post was almost two and a half years ago! I had grand aspirations and was really going to do some epic writing on design patterns, common bug fixes, and more. But life got busy. Over that span of time I got married, bought a dog, become a homeowner, and started to travel more.
+
+###  Reflection
+Now that life has quited back down I am reminded of my responsibility to give back to the community that has given so much to me over the years. How many times I have googled for a solution to a problem? The answer would undoubtedly be in the thousands. And I have almost always found an answer because at the other end of internet is a whole host of developers and other tech professionals publishing their solutions to the same problems.
+
+It's time to ask the harder question. How many times have I figured out undocumented or unpublished solutions to problems that other web professionals have had? The answer is undoubtedly, "far too frequently". This seems like a missed opportunity.
+
+### A New Direction
+You guessed it! Not only will you find new lengthy posts on here, but they will finally be coming at a reliable pace. There is a schedule in place and everything to ensure that at least one quality post finds it's way here each week. There will also be multiple "micro posts" as problems are stumbled upon during the work week and summarily written about. Instead of writing an item on a "pending posts" list to be executed later, those will be written up immediately.
+
+I am excited to be able to have the chance to help you all. You have you done so very much for me of all these years, and now it's my turn to give back.
+
