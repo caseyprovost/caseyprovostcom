@@ -5,8 +5,6 @@ date:   2019-05-11
 categories: ruby,design-patterns
 ---
 
-Seven Days of Design Patterns | Part 3 - Form Objects
-
 Welcome back to another episode of Design Patterns with yours truly. Today we are going to spend a little bit of time reviewing object-powered forms aka "Form Objects".
 
 Let's set the stage by diving into a ficticious software team and observing how they work and react to requirements changing. AwesomePeople Inc is in the middle of launching their new social media platform. The last feature before they can ship is to create a user registration form. It is not quite that simple though, the business wants this site to be viral and has decided to only allow students with a **harvard.edu** email address to sign up. The team decides to add the validation to the model and ship it.
@@ -49,6 +47,7 @@ So far everyone is happy with the solutions the team has continued to ship. They
 * For MIT students:
   - We need to hit an API they are providing to record the stats of who signed up
   - We need to send an "MIT branded" email on signup
+
 Looking at the list of the requirements, Steve and the rest of the dev team begin to scratch their chins. They decide to add the functional code first and pair on improvements later.
 
 {% highlight ruby %}
@@ -111,13 +110,13 @@ class User < ApplicationRecord
 end
 {% endhighlight ruby %}
 
-One of the newer devs on the team, Ben, reaches out to the team on Slack regarding the code. He says that this is starting to smell and will become really hairy as more and more schools are supported. He asks Steve to "pair up" to see what the two of them can clean up together. Before the two get started, Ben suggests that they draft some general requirements and go from there. Here is what they came up with:
+One of the newer devs on the team, Ben, reaches out to the team on Slack regarding the code. He says that this is starting to smell and will become really hairy as more and more schools are supported. He asks Steve to "pair up" to see what the two of them can clean up together. Before they get started, Ben suggests that they draft some general requirements and go from there. Here is what they came up with:
 
 * Users need to be able to sign up based on school/domain-name
 * Users sometimes need tailored/branded emails upon signup success
 * Users sometimes need unbranded/standard emails upon signup success
 * Users sometimes need to receive text messages upon signup success
-* For certain users we need to send API calls after a successful signup
+* For certain users they need to send API calls after a successful signup
 
 As they list this all out it starts to become clear that they have two general things to account for. First, they need to make sure they have valid data in each case...meaning the standard fields and whatever nuanced ones the customers require (like cell number). The second general requirement is support for custom "success handling" for each school.
 
@@ -277,7 +276,7 @@ class SignupUser
   private
 
   def send_text
-    if school&.signup_text?
+    if @school&.signup_text?
       Twilio.sms_messages.create(number: mobile_phone_number, body: "Thank you for signing up with Amazing Inc!")
     end
   end
@@ -295,7 +294,7 @@ class SignupUser
   end
 
   def send_stats_to_api
-    if @school.slug == 'mit'
+    if @school&.slug == 'mit'
       HTTParty.post('https://signup-stats.mit.edu/api', body: { email: @user.email })
     end
   end
@@ -318,7 +317,7 @@ Steve has taken all this change in and has been mulling it over. A few seconds a
 * Changing form error messages or fields in the UI simply translate to alterations in the one form model processing that concern
 * Handling sign up success functionality in one spot that is easily changed allows the team to handle that concern with surgical precision. There is only one place that logic lives.
 
-After a few moments Steve's eyes brighten up and he starts to get excited. In the "Admin" section of the site there is an ability to create users for Awesome Inc. When these users are added, no side-effects should happen. Meaning: no emails, texts, API calls, or otherwise should be triggered..regardless of if they are assigned a school or not.
+After a few moments Steve's eyes brighten up and he starts to get excited. In the "Admin" section of the site there is an ability to create users for AwesomePeople Inc. When these users are added, no side-effects should happen. Meaning: no emails, texts, API calls, or otherwise should be triggered..regardless of if they are assigned a school or not.
 
 The scene fades with a close up of Steve and Ben's monitor. They are going through all of their tests involving users and deleting the stubbed out email, text, and API logic from their previous implementation.
 
