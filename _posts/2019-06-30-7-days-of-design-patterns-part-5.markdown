@@ -80,7 +80,7 @@ module Report
       scope = relation.completed.not_refunded
       return scope.distinct if filters.empty?
 
-      scope.yield_self { |scope| apply_filter(scope, :start_date) }
+      scope.apply_filter(scope, :start_date)
         .yield_self { |scope| apply_filter(scope, :end_date) }
         .yield_self { |scope| apply_filter(scope, :user_status) }
         .yield_self { |scope| apply_filter(scope, :user_id) }
@@ -104,7 +104,7 @@ module Report
     end
 
     def filter_by_user_status(scope, value)
-      scope.joins(:user).where(user: { status: 'active' })
+      scope.joins(:user).where(user: { status: value })
     end
 
     def filter_by_amount(scope, value)
