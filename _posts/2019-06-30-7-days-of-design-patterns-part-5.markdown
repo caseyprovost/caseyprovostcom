@@ -5,7 +5,7 @@ date:   2019-06-30
 categories: ruby,design-patterns
 ---
 
-Welcome back folks! I hope you have been enjoying the series on design patterns so far. Today I wanted to carve our some time to talk about **query objects**. Now you might say something like, "but ActiveRecord already has scopes!"..and you would be 100% correct. The problem is in the ease of use of scopes and their ability to chain. Take the following example:
+Welcome back folks! I hope you have been enjoying the series on design patterns so far. Today I wanted to carve out some time to talk about **query objects**. Now you might say something like, "but ActiveRecord already has scopes!"..and you would be 100% correct. The problem is in the ease of use of scopes and their ability to chain. Take the following example:
 
 {% highlight ruby %}
 class IncomeReportController < ApplicationController
