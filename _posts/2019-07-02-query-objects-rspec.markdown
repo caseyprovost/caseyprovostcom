@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Query Objects and RSpec"
-date:   2019-06-30
+date:   2019-07-02
 categories: ruby,design-patterns,testing
 ---
 
