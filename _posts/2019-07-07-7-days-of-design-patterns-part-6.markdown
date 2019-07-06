@@ -5,7 +5,7 @@ date:   2019-07-06
 categories: ruby,design-patterns
 ---
 
-Why hello there! Are you researching design patterns applied to ruby? Are you interested in learning the value of Presenters? Well then, you have come to the right place my friend. Presenters, in my opinion, are most useful in when displaying information to users in your app's User Interface (UI). Let's check out the following Rails view code as a place rife with opportunity.
+Why hello there! Are you researching design patterns applied to ruby? Are you interested in learning the value of Presenters? Well then, you have come to the right place my friend. Presenters, in my opinion, are most useful when displaying information to users in your app's User Interface (UI). Let's check out the following Rails view code as a place rife with opportunity.
 
 {% highlight html %}
 <table data-collection="orders">
