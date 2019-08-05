@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "JSON:API On Rails, Part 1 of 2"
+title:  "JSON:API On Rails (Part 1 of 2)"
 date:   2019-08-05
 categories: software,json,api,rails,ruby
 ---
