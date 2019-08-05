@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "JSON:API On Rails, Part 1 of 3"
-date:   2019-08-04
+date:   2019-08-05
 categories: software,json,api,rails,ruby
 ---
 
@@ -19,7 +19,7 @@ We will be referencing the guides and docs from [Graphiti](https://www.graphiti.
 
 ## Create The New Application
 
-To create a new Rails API we are going to use the Graphiti template to generate the new project. We are going to call this app "Less Projects". In the command below you will notice the `-T` flag which tells Rails to skip Test::Unit. Since we are using there is no need for the second testing library.
+To create a new Rails API we are going to use the Graphiti template to generate the new project. We are going to call this app "Less Projects". In the command below you will notice the `-T` flag which tells Rails to skip Test::Unit. Since we are using RSpec there is no need for the second testing library.
 
 {% highlight bash %}
 # Generate the project
@@ -37,7 +37,7 @@ rails db:create
 
 ## Projects
 
-Projects will serve as our top level object. The are a container for all of the next resources.
+Projects will serve as our top level object. They are a container for all other resources.
 
 ### Creating Projects
 
@@ -120,7 +120,7 @@ expect(jsonapi_data.map(&:id)).to match_array([project1.id, project2.id])
 Alright, now let's run our test and see if things work.
 
 {% highlight bash %}
-rspec spec/requests/api/v1/projects/index_spec.r
+rspec spec/requests/api/v1/projects/index_spec.rb
 
 # output
 Finished in 0.22877 seconds (files took 2.76 seconds to load)
@@ -274,7 +274,7 @@ Again we need to duplicate and rename the previous request. Also, let's make sur
 
 Step 2: Create the POST body and Change the URL
 
-We should make sure to change the url to reference `/api/v1/projects`. Think of this as the "root" url for projects. Making a GET request to this endpoint fetches projects and making a POST requests creates them. Also make sure to change the request content to "JSON".
+We should make sure to change the url to reference `/api/v1/projects`. Think of this as the "root" url for projects. Making a GET request to this endpoint fetches projects and making a POST request creates them. Also make sure to change the request content to "JSON".
 
 You will also notice that much like our responses from the previous requests we are making use of the `data` field as the root element and passing our desired traits through the `attributes` hash. This is a pattern we will continue to re-use.
 
@@ -632,7 +632,7 @@ Finished in 0.19348 seconds (files took 0.32548 seconds to load)
 2 examples, 0 failures
 {% endhighlight %}
 
-### Creating TodoLists
+### Creating TodoList
 
 Let's create and execute the a new request in Insomnia to create a single `TodoList`.
 
@@ -779,7 +779,7 @@ Finished in 0.22919 seconds (files took 0.20982 seconds to load)
 2 examples, 0 failures
 {% endhighlight %}
 
-Whew that's two our of three resources covered. Time to rip through the `TodoListItem` and tease some of the content from part 2 of this article.
+Whew that's two of the three resources covered. Time to rip through the `TodoListItem` and tease some of the content from part 2 of this article.
 
 ### Listing TodoListItems
 
@@ -877,7 +877,7 @@ Finished in 0.18498 seconds (files took 0.23766 seconds to load)
 2 examples, 0 failures
 {% endhighlight %}
 
-### Creating TodoLists
+### Creating TodoListItems
 
 Let's create and execute the a new request in Insomnia to create a single `TodoListItem`.
 
@@ -1027,6 +1027,6 @@ Finished in 0.38517 seconds (files took 0.56542 seconds to load)
 2 examples, 0 failures
 {% endhighlight %}
 
-That covers all of our resources! Thanks for hanging in there with my while we stepped through this together. If you fast-forwarded, scrolled through, or encountered issues you can view the full repo [here](https://github.com/caseyprovost/less_projects/commit/7b9189ffc48001507f67fc7eefcd25726a44dcd7) for Part 1.
+That covers all of our resources! Thanks for hanging in there with me while we stepped through this together. If you fast-forwarded, scrolled through, or encountered issues you can view the full repo [here](https://github.com/caseyprovost/less_projects/commit/7b9189ffc48001507f67fc7eefcd25726a44dcd7) for Part 1.
 
 I cannot wait to get into part 2 and show you all where JSON:API and Graphiti really shine. I'll be covering some slightly more advanced topics such as side-posting, side-loading, filtering, sorting, and pagination.
