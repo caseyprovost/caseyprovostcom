@@ -1,15 +1,15 @@
 ---
 layout: post
 title:  "JSON:API On Rails (Part 2 of 2)"
-date:   2019-08-11
+date:   2019-08-12
 categories: software,json,api,rails,ruby
 ---
 
-Today we're going to dive right back into building our app. If you need a refresher, check out [part 1](https://caseyprovost.com/2019/jsonapi-on-rails-part-1/). We left off with the ability to CRUD Projects, TodoLists, and Todos. This is the common "boilerplate" that is often the foundation of APIs. Where APIs get more interesting though is in how they more complex topics such as searching, pagination, and nested writes. JSON:API has some wonderful answers to these things.
+Today we're going to dive right back into building our app. If you need a refresher, check out [part 1](https://caseyprovost.com/2019/jsonapi-on-rails-part-1/). We left off with the ability to CRUD Projects, TodoLists, and Todos. This is the common "boilerplate" that is often the foundation of APIs. Where APIs get more interesting though is in how they handle more complex topics such as searching, pagination, and nested writes. JSON:API has some wonderful answers to these things.
 
 ## Filtering
 
-Filtering is one of the most common problems when building out your APIs. There are lots of ways to do this, but let's see how to do this with Graphiti. Let's add teh ability to filter projects by status. As usual, we begin with our unit test.
+Filtering is one of the most common problems when building out your APIs. There are lots of ways to do this, but let's see how to do this with Graphiti. Let's add the ability to filter projects by status. As usual, we begin with our unit test.
 
 ```ruby
 context "by status" do
@@ -134,13 +134,13 @@ Huzzah! We have our custom filter. All we had to do was define a custom filter a
 
 ## Pagination
 
-Pagination (like filtering) is a somewhat interesting topic in the JSON:API world.  Neither have a spec-enforced implementation. Since we have been using Graphiti though, let's see what that library provides.
+Pagination (like filtering) is a somewhat interesting topic in the JSON:API world. Neither have a spec-enforced implementation. Since we have been using Graphiti though, let's see what that library provides.
 
 ```
 http://localhost:3000/api/v1/projects?page[size]=1&page[number]=1
 ```
 
-It really is just that simple. In order to paginate across a resource all you need to do is pass page size and page number. `size` is the number of records per "page", and `number` is the desired page number. There is one small gotcha here. Let's say our initial request to the projects endpoint looked like this:
+It really is just that simple. In order to paginate across a resource all you need to do is pass page size and page number. `Size` is the number of records per "page", and `number` is the desired page number. There is one small gotcha here. Let's say our initial request to the projects endpoint looked like this:
 
 ```bash
 http://localhost:3000/api/v1/projects?page[size]=1&page[number]=1
@@ -176,7 +176,7 @@ We would still do a post to the todo lists endpoint.
 POST http://localhost/api/v1/todo_lists
 ```
 
-But when we constructed the "body" of the POST request, we need to do a couple of special things. First, under the `relationships` section we need to specify our three todo list items. The 2 unique things here are the attributes "temp-id" and "method". The `temp-id` is just a placeholder that uniquely identifier an object. The `method` parameter is what tells Graphiti what to do to the relationship. The available options are "create", "update", "disassociate", and "destroy".
+But when we constructed the "body" of the POST request, we need to do a couple of special things. First, under the `relationships` section we need to specify our three todo list items. The 2 unique things here are the attributes "temp-id" and "method". The `temp-id` is just a placeholder that uniquely identifies an object. The `method` parameter is what tells Graphiti what to do to the relationship. The available options are "create", "update", "disassociate", and "destroy".
 
 To pass the details of these records over we need to create an `included` section. This section lives at the same level as `data`. Referencing the JSON below you will see that we reuse the content from the `todo_list_items` section under `relationships`. But now we can use `attributes` to pass over the details of our new todos.
 
@@ -245,7 +245,7 @@ This really only scratches the surface of what is possible with JSON:API and Gra
 
 ## Querying Data Graphs
 
-There is just one last thing I would like to talk to you all about today. With GraphQL all the rage and REST looking pretty dusty it is awfully tempting to just go with the trend and use GraphQL. Don't just jump on the bandwagon though! JSON:API and Graphiti query data really expressively and with high levels of complexity. But don't just take my word for it. Let's look at a rather complex example. Imagine that we wanted to get the entire object graph.
+There is just one last thing I would like to talk to you all about today. With GraphQL all the rage and REST looking pretty dusty it is awfully tempting to just go with the trend and use GraphQL. Don't just jump on the bandwagon though! JSON:API gives you power to query data really expressively. But don't just take my word for it. Let's look at a rather complex example. Imagine that we wanted to get the entire object graph.
 
 ```
 http://localhost/api/v1/projects?include=todo_lists,todo_lists.todo_list_items
