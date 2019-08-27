@@ -1,0 +1,141 @@
+---
+layout: post
+title:  "5 Tips To Build A Delightful API"
+date:   2019-08-28
+categories: software,json,api,rails,ruby
+---
+
+Let's face it..writing a good API that stands the test of time is HARD! There are many different protocols and rules that people out there offer including JSON:API, REST, GraphQL, gRPC, HATEOAS, and more. Even more complicated however, is that even within these practices there are differing opinions on how to build them well. If you have been following this blog along you know I love JSON:API and even think it is [better than GraphQL](https://caseyprovost.com/2019/jsonapi-over-graphql). Today though we aren't going to talk about how to build the best real JSON:API compliant API. I hope to leave you with more general advice that you can apply to most of these disciplines.
+
+### Tip 1: Please Version Your API
+
+It is amazing how many home-brewed APIs are out there without any
+versioning. Versioning, perhaps most importantly, allows you to make
+changes and improvements to your API without breaking all of the things
+consuming your API. There are various ways to implement versioning
+but here are my favorites:
+
+* Add a version number into the URL
+* Add a version in your headers (default if one is not provided)
+* Use date-based version numbers such as 2019-08-28 (like Stripe does)
+
+Whether you are building an internal API or customer-facing one,
+versioning will make your life easier.
+
+### Tip 2: Provide Homogenous Responses
+
+There is a surprising amount of APIs out there that provide data to
+clients in different shapes depending on the context. For example, when grabbing a user a client may receieve id, email, and name. However, if they ask for **their** user information then they get all that plus a profile object, permissions object, and more. This means that the client has to understand how to render a User object in different contexts. Not only is this difficult to do consistently, but it leads to increased dev time by the clients and often a form of tech debt. If you aren't considering these things, remember that people tend to use the APIs that are either the most valuable, or easier to work with than the competition's. Just look at how quickly and explosively Stripe grew even though payment gateways, PayPal, and more have been around for ages!
+
+### Tip 3: Make Your API Explorable
+
+Consider for a moment these 2 responses:
+
+```json
+// POST api/v1/orders_cancellations
+// EXAMPLE #1
+{
+  "success": "true",
+  "id": "1234"
+}
+
+// EXAMPLE #1
+{
+  "type": "order_cancellations",
+  "attributes": {
+    "success": true
+  },
+  "relationships": {
+    "order": {
+      "type": "orders",
+      "id": "44"
+    },
+    "refunds": {
+      "type": "order_refunds",
+      "id": "3"
+    }
+  }
+}
+
+```
+
+I know I know I promised not to push any JSON:API-like agenda. But I
+promise I am only using it to illustrate the point.
+
+In these examples, we are canceling an order. In example #1 we are
+simply returning back a success indicator. While we are doing something
+similar in example #2 you will notice that additionally, we get
+information on the order that was canceled and the associated refund.
+This may look only minimally useful, but if you provided links to these
+objects or built them programmatically you would be able to view the
+the order that was canceled as well as the refund. This is powerful because
+you can provide users with a much richer experience and eliminate
+additional API requests to look up these objects.
+
+### Tip 4: Paginate All The Things!
+
+For the love of all that is holy, please, please, please, paginate any
+response from your API that returns a collection. Not only will avoiding
+pagination likely kill your clients, but also your servers as well. It's
+just not a fun time for anyone.
+
+There are of course various schools of thought on how to do this well.
+Personally, I am a big fan of links, whether in link objects or in the
+header. Let's take a quick look at both.
+
+```bash
+# Example 1: Link headers
+
+curl --include 'https://localhost:3000/movies?page=5'
+HTTP/1.1 200 OK
+Link: <http://localhost:3000/movies?page=1>; rel="first",
+  <http://localhost:3000/movies?page=173>; rel="last",
+  <http://localhost:3000/movies?page=6>; rel="next",
+  <http://localhost:3000/movies?page=4>; rel="prev"
+Total: 4321
+Per-Page: 10
+# ...
+```
+
+```json
+// Example 2: Links in response
+{
+  "_links": {
+    "self": {
+        "href": "http://localhost:3000/movies?page=3"
+    },
+    "first": {
+        "href": "http://localhost:3000/movies"
+    },
+    "prev": {
+        "href": "http://localhost:3000/movies?page=2"
+    },
+    "next": {
+        "href": "http://localhost:3000/movies?page=4"
+    },
+    "last": {
+        "href": "http://localhost:3000/movies?page=133"
+    }
+}
+```
+
+The headers method tends to be a more general solution. It works with
+JSON:API, GraphQL, REST, and virtually every other method of building
+APIs out there. Because of this I quite like the approach.
+
+### Tip 5: Provide a Client
+
+A delightful API is 80% of the battle. However, a real barrier to entry
+is often the cost of consuming a given API. If you are consuming the API
+though or know those who are...figure out what language these folks are
+consuming your API with and then build a client.
+
+Currently, I work a lot on Rails projects with SPA front-ends like React, Spraypaint, Vue, etc. When I build an API I work with the team to build them a client for Node. When I build internal APIs for SOA or microservice architecture though I build a complimentary Ruby API library for the clients to use. This is so powerful because it gives them the full capabilities of the API without all the effort and thought on their end as to how to consume it properly. More than that though it provides standard ways to interact with your API in a given language. So instead of having 10 different implementations of a client for your new API...you will have 1 per language. And likely that 1 is something you know how to support ;)
+
+### Wrapping It Up
+
+Well, I think that's a wrap folks. Thanks for sticking with me and reading through my tips on building a delightful API. If you know of
+other helpful tips or have questions about these please drop a comment below.
+
+As always, you all are FANTASTIC! Cheers!
+
