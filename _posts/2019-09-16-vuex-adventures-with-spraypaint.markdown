@@ -9,7 +9,7 @@ Lately, I have been working on a little Vue application to consume various JSON:
 
 If you don't want to read all this though and just want a repo that shows off how to accomplish all this, then check out [Librarian](https://github.com/caseyprovost/librarian). It is a work in progress, but it is starting to give a good sense for how to use SprayPaint, Vue, Vuex, and TypeScript together :)
 
-## Tip 1: Microservices Introduce Fun!
+## Microservices Introduce Fun!
 
 Now SprayPaint comes with some amazing model helpers like BelongsTo and HasMany that easily accommodates relationships that are part of the same service. But what if you have relationships tied across services? Sadly there is no quick hack to just make this work. Instead, you have to do something as I have done below:
 
@@ -56,7 +56,7 @@ book.author((data) => {
 
 Practically speaking it isn't a deal-breaker, but hopefully, in the next week or two, I will have some improvements to share.
 
-## Tip 2: Model-based Mutations With Vuex Require Some TLC
+## Model-based Mutations With Vuex Require Some TLC
 
 SprayPaint and Vuex are somewhat opposed in how they prefer to handle state. SprayPaint allows mutations on objects in place, but if that object is in a "store" then you have to make some alterations. Take this simple form component for example:
 
@@ -194,7 +194,7 @@ export default class EditAuthor extends Vue {
 
 If you read through the code you will notice the use of `editableRecord`. This is just a local duplicate of the Vuex model in our store. This makes sense because we don't necessarily want the temporary state/modifications to this object to make it back into the store. As long as the component can mutate the object, save it, and handle errors...we are set. The one little gotcha is that when you persist the record, and it succeeds...you need to refetch the remote record since it's state has changed on the server. You can see this being done with the `syncRecord` call in `submitForm`. Overall it works really well, and it might just save you a little bit of time if, like me, you want to build clients to beautiful Graphiti-based APIs.
 
-## Tip 3: Complex Forms Require More Complex Stores
+## Complex Forms Require More Complex Stores
 
 If you recall from earlier, our `Book` model has a `publisher` and an `author`. Let's say you want to build a form where the user can select a new publisher or author from the lists on the servers. You will need to create a module for your store to isolate that data. We wouldn't want a global `publishers` collection, because that is likely used for another page/component. We only want to mutate the list of authors and publishers for our form component. So first let's take a look at the store.
 
@@ -465,11 +465,11 @@ export default class EditBook extends Vue {
 
 You will notice that the component only tracks the book state. It doesn't care about the author or publisher or how to load the selected relationships because we took care of that in the `Book` model above. This is pretty slick in my opinion and isolates the component's concerns.
 
-## Tip 4: Use TypeScript!
+## Use TypeScript!
 
 With your Vue components, there is a lot of ceremony with props, data, methods, and computed methods. If you use `Vue.extend({})` to create your components you will surely notice this. However, if you use class components you get a whole lot for free. You will notice that in the shared components there is no hash of methods or computed methods and prop definitions are a single line with `@Prop`. Not only that, but you will get all kinds of wonderful errors if your props, data, or methods return results that do not match up with the defined types. This will save you endless minutes and maybe even hours tracking down obscure prop-drilling errors.
 
-## Tip 5: Don't Use Microservices
+## Don't Use Microservices
 
 If you are building a complex front-end against multiple services... spend some time thinking about that. If you want a first-class experience on the front-end then use a proxy instead. I have started a Ruby one [here](https://github.com/caseyprovost/spider). Now it is very specific to my little learning project...but it does showcase a bit of how to pull multiple microservices together into a single GraphQL proxy to make the lives of JS-slinging folks much easier.
 
