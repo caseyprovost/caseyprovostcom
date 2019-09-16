@@ -5,13 +5,13 @@ date:   2019-09-16
 categories: software,json,api,rails,ruby
 ---
 
-Lately I have been working on a little Vue application to consume various JSON:API APIs. If you have read some of my previous posts you may know I am a huge fan of [Graphiti](https://www.graphiti.dev/guides/). What I hadn't yet played with though is the complimentary JS library called [SprayPaint](https://www.graphiti.dev/js/). Using it is pretty straight forward if you are building a simple Vue application, but if you need to integrate Vuex for a more complex application, and maybe even TypeScript...there are a few discovers I made that might help you along on your next front-end app journey.
+Lately, I have been working on a little Vue application to consume various JSON:API APIs. If you have read some of my previous posts you may know I am a huge fan of [Graphiti](https://www.graphiti.dev/guides/). What I hadn't yet played with though is the complimentary JS library called [SprayPaint](https://www.graphiti.dev/js/). Using it is pretty straight forward if you are building a simple Vue application, but if you need to integrate Vuex for a more complex application, and maybe even TypeScript...there are a few discoveries I made that might help you along on your next front-end app journey.
 
-If you don't want to read all this though and just want a repo that shows off how to accomplish all this, then checkout [Librarian](https://github.com/caseyprovost/librarian). It is a work in progress, but it is really starting to give a good sense for how to use SprayPaint, Vue, Vuex, and TypeScript together :)
+If you don't want to read all this though and just want a repo that shows off how to accomplish all this, then check out [Librarian](https://github.com/caseyprovost/librarian). It is a work in progress, but it is starting to give a good sense for how to use SprayPaint, Vue, Vuex, and TypeScript together :)
 
 ## Tip 1: Microservices Introduce Fun!
 
-Now SprayPaint comes with with some amazing model helpers like BelongsTo and HasMany that easily accomodates relationships that are part of the same service. But what if you have relationships tied across services? Sadly there is no quick hack to just make this work. Instead you have to do something like I have done below:
+Now SprayPaint comes with some amazing model helpers like BelongsTo and HasMany that easily accommodates relationships that are part of the same service. But what if you have relationships tied across services? Sadly there is no quick hack to just make this work. Instead, you have to do something as I have done below:
 
 ```typescript
 @Model()
@@ -54,7 +54,7 @@ book.author((data) => {
 })
 ```
 
-Pratically speaking it isn't a deal breaker, but hopefully in the next week or two I will have some improvements to share.
+Practically speaking it isn't a deal-breaker, but hopefully, in the next week or two, I will have some improvements to share.
 
 ## Tip 2: Model-based Mutations With Vuex Require Some TLC
 
@@ -463,14 +463,14 @@ export default class EditBook extends Vue {
 </style>
 ```
 
-You will notice that the component really only tracks the book state. It doesn't care about the author or publisher or how to load the selected relationships because we took care of that in the `Book` model above. This is pretty slick in my opinion and isolates the component's concerns.
+You will notice that the component only tracks the book state. It doesn't care about the author or publisher or how to load the selected relationships because we took care of that in the `Book` model above. This is pretty slick in my opinion and isolates the component's concerns.
 
 ## Tip 4: Use TypeScript!
 
-With your Vue components there is a lot of ceremony with props, data, methods, and computed methods. If you use `Vue.extend({})` to create your components you will surely notice this. However, if you use class components you get a whole lot for free. You will notice that in the shared components there is no hash of methods or computed methods and prop definitions are a single line with `@Prop`. Not only that, but you will get all kinds of wonderful errors if your props, data, or methods return results that do not match up with the defined types. This will save you endless minutes and maybe even hours tracking down obscure prop-drilling errors.
+With your Vue components, there is a lot of ceremony with props, data, methods, and computed methods. If you use `Vue.extend({})` to create your components you will surely notice this. However, if you use class components you get a whole lot for free. You will notice that in the shared components there is no hash of methods or computed methods and prop definitions are a single line with `@Prop`. Not only that, but you will get all kinds of wonderful errors if your props, data, or methods return results that do not match up with the defined types. This will save you endless minutes and maybe even hours tracking down obscure prop-drilling errors.
 
 ## Tip 5: Don't Use Microservices
 
-If you are building a complex front-end against multiple services... really spend some time thinking about that. If you want a first class experience on the front-end then use a proxy instead. I have started a Ruby one [here](https://github.com/caseyprovost/spider). Now it is very specific to my little learning project...but it does showcase a bit of how to pull multiple microservices together into a single GraphQL proxy to make the lives of JS-slinging folks much easier.
+If you are building a complex front-end against multiple services... spend some time thinking about that. If you want a first-class experience on the front-end then use a proxy instead. I have started a Ruby one [here](https://github.com/caseyprovost/spider). Now it is very specific to my little learning project...but it does showcase a bit of how to pull multiple microservices together into a single GraphQL proxy to make the lives of JS-slinging folks much easier.
 
-That's all for now! Thanks so much for taking the time to read through this. If you think I am totally off my rocker or just want to share some improvements feel free to drop a comment below or even open an issue on one of the projects I shared with you today. I'll be continueing to develop them and hope to pass those learnings to you. Cheers!
+That's all for now! Thanks so much for taking the time to read through this. If you think I am totally off my rocker or just want to share some improvements feel free to drop a comment below or even open an issue on one of the projects I shared with you today. I'll be continuing to develop them and hope to pass those learnings to you. Cheers!
